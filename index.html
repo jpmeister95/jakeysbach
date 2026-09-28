@@ -1,0 +1,801 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<style>img{max-width:100%}[hidden]{display:none !important}</style>
+<title>Jakey's Bachelor Party</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Barlow:wght@400;600;700&family=Barlow+Condensed:wght@500;600;700&display=swap">
+<style>
+  :root{
+    --bg:#F2EBDC;
+    --card:#FBF7EC;
+    --ink:#14213D;
+    --muted:#5D6B84;
+    --line:#CFC2A6;
+    --red:#C8102E;
+    --red-ink:#A50D24;
+    --red-wash:#F6E3E0;
+    --chip:#E9E0CB;
+    --shadow:#DCCFB0;
+    --mast:#14213D;
+    --mast-ink:#F2EBDC;
+    --mast-sub:#B8C2D8;
+    --focus:#C8102E;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      color-scheme: dark;
+      --bg:#0B1424;
+      --card:#16233B;
+      --ink:#F1E9D6;
+      --muted:#9DACC6;
+      --line:#2C3D5C;
+      --red:#E85348;
+      --red-ink:#F08A80;
+      --red-wash:#2A1E28;
+      --chip:#1D2C48;
+      --shadow:#050B16;
+      --mast:#060D1B;
+      --mast-ink:#F1E9D6;
+      --mast-sub:#8FA0BE;
+      --focus:#E85348;
+    }
+  }
+  :root[data-theme="dark"]{
+    color-scheme: dark;
+    --bg:#0B1424;
+    --card:#16233B;
+    --ink:#F1E9D6;
+    --muted:#9DACC6;
+    --line:#2C3D5C;
+    --red:#E85348;
+    --red-ink:#F08A80;
+    --red-wash:#2A1E28;
+    --chip:#1D2C48;
+    --shadow:#050B16;
+    --mast:#060D1B;
+    --mast-ink:#F1E9D6;
+    --mast-sub:#8FA0BE;
+    --focus:#E85348;
+  }
+
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font:400 16px/1.55 Barlow, "Helvetica Neue", Arial, sans-serif;
+    padding-inline:16px;
+    padding-block:0 48px;
+  }
+  a{color:var(--red-ink);}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--focus); outline-offset:2px; border-radius:4px;}
+  b, strong{font-weight:700;}
+
+  /* ---------- masthead ---------- */
+  .mast{
+    background:var(--mast);
+    color:var(--mast-ink);
+    margin-inline:-16px;
+    padding-inline:16px;
+    padding-block:14px 12px;
+    border-bottom:4px solid var(--red);
+  }
+  .mast-in{
+    max-width:760px; margin-inline:auto;
+    display:flex; align-items:baseline; justify-content:space-between; gap:12px; flex-wrap:wrap;
+  }
+  .brand{
+    font-family:"Alfa Slab One", Georgia, serif;
+    font-size:22px; letter-spacing:.5px; color:var(--mast-ink);
+  }
+  .brand .rd{color:var(--red);}
+  .mast-sub{
+    font-family:"Barlow Condensed", Arial, sans-serif;
+    font-weight:600; font-size:15px; letter-spacing:1.5px; color:var(--mast-sub);
+  }
+
+  /* ---------- tabs ---------- */
+  .tabs{
+    position:sticky; top:env(safe-area-inset-top, 0px); z-index:20;
+    background:var(--bg);
+    margin-inline:-16px; padding-inline:8px;
+    border-bottom:3px solid var(--ink);
+    display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  .tabs::-webkit-scrollbar{display:none;}
+  .tabs-in{max-width:760px; margin-inline:auto; display:flex; gap:2px; width:100%;}
+  .tab{
+    appearance:none; background:none; border:none; cursor:pointer;
+    font-family:"Barlow Condensed", Arial, sans-serif;
+    font-weight:700; font-size:16px; letter-spacing:1.5px;
+    color:var(--muted);
+    padding:13px 13px 10px;
+    border-bottom:4px solid transparent;
+    white-space:nowrap;
+    flex:1 0 auto; text-align:center;
+  }
+  .tab[aria-selected="true"]{color:var(--ink); border-bottom-color:var(--red);}
+
+  /* ---------- layout ---------- */
+  .wrap{max-width:760px; margin-inline:auto;}
+  .panel{display:flex; flex-direction:column; gap:18px; padding-block:22px 8px;}
+
+  .card{
+    background:var(--card);
+    border:2px solid var(--ink);
+    border-radius:12px;
+    box-shadow:5px 5px 0 var(--shadow);
+    padding:18px 18px 16px;
+  }
+  .card-h{
+    font-family:"Barlow Condensed", Arial, sans-serif;
+    font-weight:700; font-size:15px; letter-spacing:2px;
+    color:var(--red-ink);
+    margin:0 0 10px;
+  }
+  .card p{margin:0 0 10px;}
+  .card p:last-child{margin-bottom:0;}
+  .mut{color:var(--muted);}
+  .small{font-size:14px;}
+
+  /* ---------- hero ---------- */
+  .hero{padding-block:8px 2px;}
+  .pennants{display:block; width:100%; height:26px; margin-bottom:14px;}
+  .eyebrow{
+    font-family:"Barlow Condensed", Arial, sans-serif;
+    font-weight:700; font-size:16px; letter-spacing:3px; color:var(--red-ink);
+    margin:0 0 4px;
+  }
+  h1.big{
+    font-family:"Alfa Slab One", Georgia, serif;
+    font-weight:400;
+    font-size:clamp(34px, 9vw, 58px);
+    line-height:1.04; margin:0 0 10px; text-wrap:balance;
+  }
+  .sub{font-size:17px; color:var(--muted); margin:0; max-width:52ch;}
+
+  /* ---------- countdown ---------- */
+  .cd{display:grid; grid-template-columns:repeat(4, 1fr); gap:10px; margin-top:6px;}
+  .cd-tile{
+    background:var(--chip); border:2px solid var(--ink); border-radius:10px;
+    text-align:center; padding:10px 4px 8px;
+  }
+  .cd-num{
+    font-family:"Barlow Condensed", Arial, sans-serif;
+    font-weight:700; font-size:clamp(28px, 7vw, 40px); line-height:1;
+    font-variant-numeric:tabular-nums; color:var(--red-ink); display:block;
+  }
+  .cd-lab{
+    font-family:"Barlow Condensed", Arial, sans-serif;
+    font-weight:600; font-size:12px; letter-spacing:2px; color:var(--muted);
+  }
+  .cd-msg{
+    font-family:"Alfa Slab One", Georgia, serif;
+    font-size:clamp(20px, 5vw, 28px); color:var(--red-ink); margin-top:4px;
+  }
+
+  /* ---------- vitals ---------- */
+  .vitals{display:grid; grid-template-columns:repeat(auto-fit, minmax(150px, 1fr)); gap:10px;}
+  .vit{
+    border:1.5px solid var(--line); border-radius:10px; background:var(--card);
+    padding:12px 14px;
+  }
+  .vit .k{
+    font-family:"Barlow Condensed", Arial, sans-serif;
+    font-weight:600; font-size:12px; letter-spacing:2px; color:var(--muted); display:block;
+  }
+  .vit .v{font-weight:700; font-size:17px;}
+  .vit .v2{font-size:13px; color:var(--muted); display:block;}
+
+  /* ---------- schedule rows ---------- */
+  .day-h{
+    display:flex; align-items:baseline; gap:10px; flex-wrap:wrap;
+    margin:4px 0 2px;
+  }
+  .day-name{
+    font-family:"Alfa Slab One", Georgia, serif;
+    font-size:clamp(22px, 5.5vw, 28px); margin:0;
+  }
+  .day-tag{
+    font-family:"Barlow Condensed", Arial, sans-serif;
+    font-weight:700; font-size:14px; letter-spacing:2px;
+    color:var(--red-ink);
+    border:1.5px solid var(--red-ink); border-radius:999px;
+    padding:2px 10px;
+  }
+  .rows{display:flex; flex-direction:column;}
+  .row{
+    display:grid; grid-template-columns:88px 1fr; gap:12px;
+    padding-block:11px;
+    border-bottom:1.5px dashed var(--line);
+  }
+  .row:last-child{border-bottom:none; padding-bottom:2px;}
+  .row:first-child{padding-top:2px;}
+  .t{
+    font-family:"Barlow Condensed", Arial, sans-serif;
+    font-weight:700; font-size:17px; line-height:1.25; letter-spacing:.5px;
+    color:var(--red-ink);
+    font-variant-numeric:tabular-nums;
+  }
+  .tx{min-width:0;}
+  .tx .n{display:block; font-size:13.5px; color:var(--muted); margin-top:2px;}
+  .banner{
+    border:2px dashed var(--red-ink); border-radius:10px;
+    background:var(--red-wash); color:var(--red-ink);
+    font-family:"Barlow Condensed", Arial, sans-serif;
+    font-weight:600; font-size:15.5px; letter-spacing:.8px;
+    padding:10px 12px; margin-bottom:12px;
+  }
+
+  /* ---------- crew ---------- */
+  .roster{display:grid; grid-template-columns:repeat(auto-fill, minmax(150px, 1fr)); gap:8px;}
+  .r-chip{
+    background:var(--chip); border:1.5px solid var(--line); border-radius:8px;
+    padding:7px 10px; font-weight:600; font-size:14.5px;
+    display:flex; align-items:center; justify-content:space-between; gap:6px;
+  }
+  .badge{
+    font-family:"Barlow Condensed", Arial, sans-serif;
+    font-weight:700; font-size:11px; letter-spacing:1.5px;
+    background:var(--red); color:#FFF8EE;
+    border-radius:4px; padding:2px 6px; flex:none;
+  }
+  .pairs{display:grid; grid-template-columns:repeat(auto-fill, minmax(160px, 1fr)); gap:8px;}
+  .pair{
+    border:1.5px solid var(--line); border-radius:8px; background:var(--card);
+    padding:8px 10px; font-weight:600; font-size:14.5px;
+  }
+  .pair .solo{
+    font-family:"Barlow Condensed", Arial, sans-serif;
+    font-weight:600; font-size:11px; letter-spacing:1.5px; color:var(--muted);
+  }
+  .wave{margin:0 0 12px;}
+  .wave:last-child{margin-bottom:0;}
+  .wave-h{
+    font-family:"Barlow Condensed", Arial, sans-serif;
+    font-weight:700; font-size:14px; letter-spacing:2px; color:var(--ink);
+    margin:0 0 3px;
+  }
+  .wave p{margin:0; color:var(--muted); font-size:14.5px;}
+  .wave .tt{color:var(--red-ink); font-weight:700; font-variant-numeric:tabular-nums;}
+
+  /* ---------- game day ---------- */
+  .match{
+    text-align:center; padding-block:22px 20px;
+  }
+  .match .vs{
+    font-family:"Alfa Slab One", Georgia, serif;
+    font-size:clamp(26px, 7vw, 42px); line-height:1.1; margin:0 0 6px; text-wrap:balance;
+  }
+  .match .at{color:var(--red-ink);}
+  .match .meta{
+    font-family:"Barlow Condensed", Arial, sans-serif;
+    font-weight:600; font-size:16px; letter-spacing:1.5px; color:var(--muted); margin:0;
+  }
+  .cover{display:grid; grid-template-columns:repeat(auto-fit, minmax(140px, 1fr)); gap:8px; margin-top:4px;}
+  .cover .c{
+    border:1.5px solid var(--line); border-radius:8px; padding:9px 11px;
+    font-weight:600; font-size:14.5px; background:var(--card);
+  }
+  .cover .c .ok{color:var(--red-ink); font-weight:700;}
+  .chant{
+    font-family:"Barlow Condensed", Arial, sans-serif;
+    font-weight:600; font-size:19px; line-height:1.5; letter-spacing:.5px;
+    margin:0; padding-left:14px; border-left:4px solid var(--red);
+  }
+
+  /* ---------- spots ---------- */
+  .spot{padding:15px 18px 14px;}
+  .spot-h{display:flex; align-items:baseline; justify-content:space-between; gap:10px; flex-wrap:wrap;}
+  .spot-name{font-weight:700; font-size:17.5px; margin:0;}
+  .maplink{
+    font-family:"Barlow Condensed", Arial, sans-serif;
+    font-weight:700; font-size:14px; letter-spacing:1.5px;
+    color:var(--red-ink); text-decoration:none; flex:none;
+  }
+  .maplink:hover{text-decoration:underline;}
+  .spot p{margin:4px 0 0; color:var(--muted); font-size:14.5px;}
+
+  /* ---------- misc ---------- */
+  .btn{
+    display:inline-block;
+    font-family:"Barlow Condensed", Arial, sans-serif;
+    font-weight:700; font-size:15px; letter-spacing:1.5px;
+    color:var(--card); background:var(--ink);
+    border:2px solid var(--ink); border-radius:8px;
+    padding:8px 14px; text-decoration:none;
+  }
+  .copybtn{
+    appearance:none; cursor:pointer;
+    font-family:"Barlow Condensed", Arial, sans-serif;
+    font-weight:700; font-size:13px; letter-spacing:1.5px;
+    color:var(--red-ink); background:none;
+    border:1.5px solid var(--red-ink); border-radius:6px;
+    padding:3px 9px; margin-left:8px; vertical-align:1px;
+  }
+  .foot{
+    max-width:760px; margin:34px auto 0; padding-top:16px;
+    border-top:3px solid var(--ink);
+    text-align:center; color:var(--muted); font-size:14px;
+  }
+  .foot .sig{
+    font-family:"Alfa Slab One", Georgia, serif;
+    color:var(--ink); font-size:16px; margin-top:6px;
+  }
+  /* ---------- jakey stickers ---------- */
+  .hero, .card{position:relative;}
+  .jk{filter:drop-shadow(0 3px 5px rgba(10,14,24,.28)); cursor:pointer;}
+  .slap{position:absolute; z-index:2; transform:rotate(var(--r, 0deg));}
+  .day-stick{width:44px; margin-left:auto; align-self:center; transform:rotate(var(--r, 0deg));}
+  .moods-h{font-family:"Barlow Condensed", Arial, sans-serif; font-weight:700; font-size:13px;
+    letter-spacing:2px; color:var(--muted); margin:18px 0 0;}
+  .moods{display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin:10px 0 2px;}
+  .moods span{display:inline-block; transform:rotate(var(--r, 0deg));}
+  .moods img{width:54px; display:block;}
+  @keyframes wig{
+    0%{transform:rotate(0deg) scale(1)}
+    25%{transform:rotate(-12deg) scale(1.22)}
+    55%{transform:rotate(10deg) scale(1.18)}
+    80%{transform:rotate(-5deg) scale(1.08)}
+    100%{transform:rotate(0deg) scale(1)}
+  }
+  .jk.wig{animation:wig .5s ease;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+</style>
+</head>
+<body>
+<header class="mast">
+  <div class="mast-in">
+    <span class="brand">OXFORD <span class="rd">&rsquo;26</span></span>
+    <span class="mast-sub">NOV 6&ndash;8 &middot; HOTTY TODDY</span>
+  </div>
+</header>
+
+<nav class="tabs" role="tablist" aria-label="Site sections">
+  <div class="tabs-in">
+    <button class="tab" role="tab" id="tab-plan" aria-selected="true" aria-controls="p-plan" data-tab="plan">PLAN</button>
+    <button class="tab" role="tab" id="tab-schedule" aria-selected="false" aria-controls="p-schedule" data-tab="schedule">SCHEDULE</button>
+    <button class="tab" role="tab" id="tab-crew" aria-selected="false" aria-controls="p-crew" data-tab="crew">CREW</button>
+    <button class="tab" role="tab" id="tab-gameday" aria-selected="false" aria-controls="p-gameday" data-tab="gameday">GAME DAY</button>
+    <button class="tab" role="tab" id="tab-spots" aria-selected="false" aria-controls="p-spots" data-tab="spots">SPOTS</button>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <!-- ================= PLAN ================= -->
+  <section class="panel" id="p-plan" role="tabpanel" aria-labelledby="tab-plan">
+    <div class="hero">
+      <svg class="pennants" viewBox="0 0 760 30" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+        <line x1="0" y1="4" x2="760" y2="4" stroke="currentColor" stroke-width="2"/>
+        <g>
+          <path d="M30 4 L70 4 L50 28 Z" fill="#C8102E"/>
+          <path d="M120 4 L160 4 L140 28 Z" fill="currentColor"/>
+          <path d="M210 4 L250 4 L230 28 Z" fill="#C8102E"/>
+          <path d="M300 4 L340 4 L320 28 Z" fill="currentColor"/>
+          <path d="M390 4 L430 4 L410 28 Z" fill="#C8102E"/>
+          <path d="M480 4 L520 4 L500 28 Z" fill="currentColor"/>
+          <path d="M570 4 L610 4 L590 28 Z" fill="#C8102E"/>
+          <path d="M660 4 L700 4 L680 28 Z" fill="currentColor"/>
+        </g>
+      </svg>
+      <p class="eyebrow">JAKEY&rsquo;S BACHELOR PARTY</p>
+      <h1 class="big">OXFORD,<br>MISSISSIPPI</h1>
+      <img class="jk slap" style="height:104px; top:-4px; right:0; --r:8deg" src="stickers/cap.png" alt="" aria-hidden="true">
+      <p class="sub">November 6&ndash;8, 2026. Twenty-three guys, one hotel, and Georgia coming to the Grove.</p>
+    </div>
+
+    <div class="card">
+      <h2 class="card-h" id="cd-label">UNTIL THE FIRST BUS LEAVES THE HOTEL</h2>
+      <div class="cd" id="cd-tiles">
+        <div class="cd-tile"><span class="cd-num" id="cd-d">&ndash;</span><span class="cd-lab">DAYS</span></div>
+        <div class="cd-tile"><span class="cd-num" id="cd-h">&ndash;</span><span class="cd-lab">HRS</span></div>
+        <div class="cd-tile"><span class="cd-num" id="cd-m">&ndash;</span><span class="cd-lab">MIN</span></div>
+        <div class="cd-tile"><span class="cd-num" id="cd-s">&ndash;</span><span class="cd-lab">SEC</span></div>
+      </div>
+      <p class="cd-msg" id="cd-msg" hidden></p>
+      <img class="jk slap" style="height:72px; bottom:-48px; right:10px; --r:-7deg" src="stickers/grin.png" alt="" aria-hidden="true">
+    </div>
+
+    <div class="vitals">
+      <div class="vit"><span class="k">WHEN</span><span class="v">Nov 6&ndash;8</span><span class="v2">Fri afternoon to Sun morning</span></div>
+      <div class="vit"><span class="k">WHERE</span><span class="v">Oxford, MS</span><span class="v2">Home of Ole Miss</span></div>
+      <div class="vit"><span class="k">HOTEL</span><span class="v">Hampton Inn</span><span class="v2">Batesville &middot; buses leave from the lobby</span></div>
+      <div class="vit"><span class="k">THE GAME</span><span class="v">Georgia at Ole Miss</span><span class="v2">Sat Nov 7 &middot; kickoff TBA</span></div>
+      <div class="vit"><span class="k">FLY INTO</span><span class="v">Memphis (MEM)</span><span class="v2">~90 min from Oxford</span></div>
+      <div class="vit"><span class="k">CREW</span><span class="v">23 strong</span><span class="v2">See the Crew tab</span></div>
+    </div>
+
+    <div class="card">
+      <img class="jk slap" style="height:64px; top:-40px; right:6px; --r:-7deg" src="stickers/eyeblack.png" alt="" aria-hidden="true">
+      <h2 class="card-h">THE BUSES</h2>
+      <div class="rows">
+        <div class="row">
+          <span class="t">FRI<br>2:00 PM</span>
+          <div class="tx">Hotel to campus.<span class="n">Miss it? Uber over and find us.</span></div>
+        </div>
+        <div class="row">
+          <span class="t">SAT<br>8 / 11 AM</span>
+          <div class="tx">Hotel to the Grove, and back after the game.<span class="n">Time locks once kickoff is announced game week.</span></div>
+        </div>
+        <div class="row">
+          <span class="t">SUN<br>5:00 AM</span>
+          <div class="tx">Hotel to MEM, for the 7:00 AM flights only.<span class="n">Everyone else books their own ride. Do it Saturday night.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="card-h">GETTING THERE</h2>
+      <img class="jk slap" style="height:64px; top:-40px; right:6px; --r:6deg" src="stickers/mug.png" alt="" aria-hidden="true">
+      <p>Land at Memphis, then it&rsquo;s about 90 minutes south to Oxford. Rides are self-organizing off the flight sheet, and the big Delta 4903 crew lands together Friday at 10:40 AM.</p>
+      <p><a class="btn" href="https://docs.google.com/spreadsheets/d/1py4I5ai0ee4uGaVopdiIJDrAWdsPfz1sZ0VSb4Gv9dU/edit" target="_blank" rel="noopener">OPEN THE FLIGHT SHEET &#8599;</a></p>
+    </div>
+
+    <div class="card">
+      <img class="jk slap" style="height:68px; top:-44px; right:6px; --r:7deg" src="stickers/beach.png" alt="" aria-hidden="true">
+      <img class="jk slap" style="height:90px; bottom:-64px; right:10px; --r:-5deg" src="stickers/waiter.png" alt="" aria-hidden="true">
+      <h2 class="card-h">PACK SMART</h2>
+      <p class="small">Early November in Oxford runs mid-60s by day, low 40s at night. Bring a warm layer for the Grove morning and the walk home. Gameday fit in navy or red, comfortable shoes, sunglasses, Advil.</p>
+    </div>
+  </section>
+
+  <!-- ================= SCHEDULE ================= -->
+  <section class="panel" id="p-schedule" role="tabpanel" aria-labelledby="tab-schedule" hidden>
+    <div class="day-h">
+      <h2 class="day-name">FRIDAY</h2>
+      <span class="day-tag">NOV 6 &middot; THE WARM-UP</span>
+      <img class="jk day-stick" style="--r:-6deg" src="stickers/hype.png" alt="" aria-hidden="true">
+    </div>
+    <div class="card">
+      <img class="jk slap" style="height:64px; top:-40px; right:6px; --r:-6deg" src="stickers/grin.png" alt="" aria-hidden="true">
+      <div class="rows">
+        <div class="row"><span class="t">2:00 PM</span><div class="tx">Bus from the hotel to campus.<span class="n">Landing later? Uber over and catch up.</span></div></div>
+        <div class="row"><span class="t">2:30 PM</span><div class="tx">Wristbands at The Library.<span class="n">Everyone needs one &mdash; late arrivals included.</span></div></div>
+        <div class="row"><span class="t">3:00 PM</span><div class="tx">Bookstore run, then walk the campus.</div></div>
+        <div class="row"><span class="t">4:15 PM</span><div class="tx">Drinks at The Velvet Ditch.</div></div>
+        <div class="row"><span class="t">6:45 PM</span><div class="tx">Dinner at Snackbar.</div></div>
+        <div class="row"><span class="t">10:00 PM</span><div class="tx">Back to The Library. Night out on the Square.</div></div>
+        <div class="row"><span class="t">1:00 AM</span><div class="tx">Home. Big day tomorrow.</div></div>
+      </div>
+    </div>
+
+    <div class="day-h">
+      <h2 class="day-name">SATURDAY</h2>
+      <span class="day-tag">NOV 7 &middot; GAME DAY</span>
+      <img class="jk day-stick" style="--r:5deg" src="stickers/eyeblack.png" alt="" aria-hidden="true">
+    </div>
+    <div class="card">
+      <div class="banner">KICKOFF IS TBA &mdash; 3:30 OR 7:00. IT GETS ANNOUNCED GAME WEEK, AND THE BUS TIME LOCKS THEN.</div>
+      <div class="rows">
+        <div class="row"><span class="t">8 / 11 AM</span><div class="tx">Bus from the hotel to the Grove.</div></div>
+        <div class="row"><span class="t">ALL DAY</span><div class="tx">Tailgate.<span class="n">Food, drinks, and the spot are covered. Your job is showing up in the gear.</span></div></div>
+        <div class="row"><span class="t">3:30 / 7 PM</span><div class="tx">Georgia at Ole Miss, Vaught-Hemingway Stadium.</div></div>
+        <div class="row"><span class="t">AFTER</span><div class="tx">Bus back to the hotel.</div></div>
+      </div>
+    </div>
+
+    <div class="day-h">
+      <h2 class="day-name">SUNDAY</h2>
+      <span class="day-tag">NOV 8 &middot; THE GETAWAY</span>
+      <img class="jk day-stick" style="--r:-7deg" src="stickers/mug.png" alt="" aria-hidden="true">
+    </div>
+    <div class="card">
+      <div class="rows">
+        <div class="row"><span class="t">5:00 AM</span><div class="tx">Bus to Memphis for the 7:00 AM flights.<span class="n">In the lobby at 4:50. The bus does not do sentiment.</span></div></div>
+        <div class="row"><span class="t">LATER</span><div class="tx">Everyone else gets their own ride to MEM, about 90 minutes.<span class="n">Book it Saturday night, not Sunday morning.</span></div></div>
+        <div class="row"><span class="t">&nbsp;</span><div class="tx">Fly safe. Next stop: the wedding.</div></div>
+      </div>
+      <img class="jk slap" style="height:82px; bottom:-56px; right:10px; --r:8deg" src="stickers/cap.png" alt="" aria-hidden="true">
+      <img class="jk slap" style="height:70px; bottom:-48px; right:96px; --r:-6deg" src="stickers/beach.png" alt="" aria-hidden="true">
+    </div>
+
+    <p class="mut small">All times Central.</p>
+  </section>
+
+  <!-- ================= CREW ================= -->
+  <section class="panel" id="p-crew" role="tabpanel" aria-labelledby="tab-crew" hidden>
+    <div class="day-h">
+      <h2 class="day-name">THE CREW</h2>
+      <span class="day-tag">23 STRONG</span>
+      <img class="jk day-stick" style="--r:6deg" src="stickers/grin.png" alt="" aria-hidden="true">
+    </div>
+    <div class="card">
+      <div class="roster">
+        <div class="r-chip"><span>Jake Meister</span><span class="badge">GROOM</span></div>
+        <div class="r-chip"><span>Josh Meister</span></div>
+        <div class="r-chip"><span>Nic Meister</span></div>
+        <div class="r-chip"><span>Paul Meister</span></div>
+        <div class="r-chip"><span>Jeff Kransdorf</span></div>
+        <div class="r-chip"><span>Andrew Crown</span></div>
+        <div class="r-chip"><span>Jordy Bank</span></div>
+        <div class="r-chip"><span>David Berk</span></div>
+        <div class="r-chip"><span>Drew Bloom</span></div>
+        <div class="r-chip"><span>Zack Coleman</span></div>
+        <div class="r-chip"><span>Spencer Dahl</span></div>
+        <div class="r-chip"><span>Lorenzio Enriquez</span></div>
+        <div class="r-chip"><span>Sam Greenwald</span></div>
+        <div class="r-chip"><span>David Greenfield</span></div>
+        <div class="r-chip"><span>Jake Kaminer</span></div>
+        <div class="r-chip"><span>Jon Kligman</span></div>
+        <div class="r-chip"><span>Kyle Lewis</span></div>
+        <div class="r-chip"><span>Dominic Mitchell</span></div>
+        <div class="r-chip"><span>Jacob Nussbaum</span></div>
+        <div class="r-chip"><span>Sam Payette</span></div>
+        <div class="r-chip"><span>Jonny Raab</span></div>
+        <div class="r-chip"><span>Henry Schreiber</span></div>
+        <div class="r-chip"><span>Matt Watkins</span></div>
+      </div>
+      <img class="jk slap" style="height:92px; bottom:-66px; right:10px; --r:-4deg" src="stickers/waiter.png" alt="" aria-hidden="true">
+    </div>
+
+    <div class="card">
+      <img class="jk slap" style="height:68px; top:-44px; right:100px; --r:6deg" src="stickers/mug.png" alt="" aria-hidden="true">
+      <h2 class="card-h">ROOMS</h2>
+      <div class="pairs">
+        <div class="pair">Jake + Andrew</div>
+        <div class="pair">Nic + Jonny</div>
+        <div class="pair">Zack + Chuck</div>
+        <div class="pair">Berk + Greenwald</div>
+        <div class="pair">Watkins + Nuss</div>
+        <div class="pair">Payette + Jordy</div>
+        <div class="pair">Kaminer + Dahl</div>
+        <div class="pair">Kligman + Zio</div>
+        <div class="pair">Drew + Dom</div>
+        <div class="pair">Kyle + Henry</div>
+        <div class="pair">Josh <span class="solo">SOLO</span></div>
+        <div class="pair">Paul <span class="solo">SOLO</span></div>
+        <div class="pair">Jeff <span class="solo">SOLO</span></div>
+      </div>
+      <p class="mut small" style="margin-top:10px;">Rooms are booked and pairings are final. Appeals go to the groom.</p>
+      <img class="jk slap" style="height:84px; bottom:-58px; right:8px; --r:5deg" src="stickers/beach.png" alt="" aria-hidden="true">
+    </div>
+
+    <div class="card">
+      <img class="jk slap" style="height:70px; top:-46px; right:110px; --r:-6deg" src="stickers/hype.png" alt="" aria-hidden="true">
+      <img class="jk slap" style="height:78px; bottom:-52px; right:14px; --r:-7deg" src="stickers/cap.png" alt="" aria-hidden="true">
+      <h2 class="card-h">ARRIVAL WAVES</h2>
+      <div class="wave">
+        <h3 class="wave-h">THURSDAY ADVANCE TEAM &middot; 7</h3>
+        <p>Watkins <span class="tt">1:51p</span> &middot; Dahl <span class="tt">5:47p</span> &middot; Josh + Paul <span class="tt">7:25p</span> &middot; Kaminer <span class="tt">10:07p</span> &middot; Kligman <span class="tt">10:43p</span> &middot; Dom <span class="tt">11:59p</span></p>
+      </div>
+      <div class="wave">
+        <h3 class="wave-h">FRIDAY MORNING AIRLIFT &middot; 11</h3>
+        <p>Jordy <span class="tt">8:30a</span> &middot; David G. <span class="tt">10:01a</span> &middot; Nic + Jonny <span class="tt">10:08a</span> &middot; Greenwald <span class="tt">10:30a</span> &middot; Jake, Jeff, Andrew, Nuss + Zack <span class="tt">10:40a</span> (Delta 4903) &middot; Kyle <span class="tt">10:48a</span></p>
+      </div>
+      <div class="wave">
+        <h3 class="wave-h">FRIDAY AFTERNOON &middot; 3</h3>
+        <p>Drew <span class="tt">1:30p</span> &middot; Berk <span class="tt">3:47p</span> &middot; Henry <span class="tt">5:47p</span></p>
+      </div>
+      <div class="wave">
+        <h3 class="wave-h">STILL A MYSTERY &middot; 2</h3>
+        <p>Zio (everything) and Payette (arrival). The sheet is right there, fellas.</p>
+      </div>
+      <p style="margin-top:12px;"><a class="btn" href="https://docs.google.com/spreadsheets/d/1py4I5ai0ee4uGaVopdiIJDrAWdsPfz1sZ0VSb4Gv9dU/edit" target="_blank" rel="noopener">FLIGHT SHEET &#8599;</a></p>
+    </div>
+  </section>
+
+  <!-- ================= GAME DAY ================= -->
+  <section class="panel" id="p-gameday" role="tabpanel" aria-labelledby="tab-gameday" hidden>
+    <div class="card match">
+      <p class="eyebrow">SATURDAY, NOVEMBER 7</p>
+      <p class="vs">GEORGIA <span class="at">AT</span> OLE&nbsp;MISS</p>
+      <p class="meta">VAUGHT-HEMINGWAY STADIUM &middot; KICKOFF TBA</p>
+      <img class="jk slap" style="height:76px; top:-48px; right:8px; --r:-8deg" src="stickers/eyeblack.png" alt="" aria-hidden="true">
+      <img class="jk slap" style="height:78px; bottom:-52px; right:14px; --r:6deg" src="stickers/hype.png" alt="" aria-hidden="true">
+    </div>
+
+    <div class="card">
+      <img class="jk slap" style="height:76px; top:-48px; right:120px; --r:6deg" src="stickers/grin.png" alt="" aria-hidden="true">
+      <h2 class="card-h">THE STAKES</h2>
+      <p>This is the rematch. Ole Miss ended Georgia&rsquo;s season 39&ndash;34 in the Sugar Bowl on New Year&rsquo;s Day, on the way to the program&rsquo;s first Playoff run. Georgia took the regular-season meeting in Athens last fall. This one is in Oxford, and it will be loud.</p>
+      <p class="mut small">Kickoff (3:30 or 7:00) gets announced the week of the game. Bus and tailgate times lock then.</p>
+    </div>
+
+    <div class="card">
+      <img class="jk slap" style="height:68px; top:-42px; right:8px; --r:5deg" src="stickers/waiter.png" alt="" aria-hidden="true">
+      <h2 class="card-h">WHAT&rsquo;S COVERED</h2>
+      <div class="cover">
+        <div class="c"><span class="ok">&#10003;</span> Game tickets</div>
+        <div class="c"><span class="ok">&#10003;</span> Tailgate spot in the Grove</div>
+        <div class="c"><span class="ok">&#10003;</span> Food + drinks all day</div>
+        <div class="c"><span class="ok">&#10003;</span> Buses both ways</div>
+      </div>
+      <p class="small" style="margin-top:10px;">Your only job: show up in the gear. Swag is encouraged &mdash; grab it at the bookstore Friday if you come up short.</p>
+    </div>
+
+    <div class="card">
+      <img class="jk slap" style="height:68px; top:-44px; right:8px; --r:-6deg" src="stickers/beach.png" alt="" aria-hidden="true">
+      <h2 class="card-h">THE GROVE</h2>
+      <p>Ten acres of oaks in the middle of campus, tens of thousands of people, and the most famous tailgate in college football. We have a spot in the middle of it from the morning on.</p>
+    </div>
+
+    <div class="card">
+      <img class="jk slap" style="height:70px; top:-46px; right:8px; --r:7deg" src="stickers/hype.png" alt="" aria-hidden="true">
+      <h2 class="card-h">LEARN THE HOTTY TODDY</h2>
+      <p class="chant">
+        Are you ready? Hell yeah! Damn right!<br>
+        Hotty Toddy, gosh almighty, who the hell are we? Hey!<br>
+        Flim flam, bim bam, Ole Miss by damn!
+      </p>
+      <p class="mut small" style="margin-top:10px;">You will hear it roughly four hundred times on Saturday. When in doubt, yell it back.</p>
+      <img class="jk slap" style="height:88px; bottom:-62px; right:12px; --r:5deg" src="stickers/mug.png" alt="" aria-hidden="true">
+    </div>
+  </section>
+
+  <!-- ================= SPOTS ================= -->
+  <section class="panel" id="p-spots" role="tabpanel" aria-labelledby="tab-spots" hidden>
+    <div class="day-h">
+      <h2 class="day-name">THE SPOTS</h2>
+      <span class="day-tag">OXFORD, MS</span>
+      <img class="jk day-stick" style="--r:-5deg" src="stickers/waiter.png" alt="" aria-hidden="true">
+    </div>
+
+    <div class="card spot">
+      <img class="jk slap" style="height:64px; top:-40px; right:6px; --r:6deg" src="stickers/mug.png" alt="" aria-hidden="true">
+      <div class="spot-h"><h3 class="spot-name">Hampton Inn Batesville</h3><a class="maplink" href="https://maps.google.com/?q=Hampton+Inn+103+Lakewood+Drive+Batesville+MS+38606" target="_blank" rel="noopener">MAP &#8599;</a></div>
+      <p>Home base. Rooms are pre-assigned (see the Crew tab) and every bus leaves from the lobby. About 30 minutes from campus.</p>
+      <p class="mut small" style="margin-top:6px;">103 Lakewood Drive, Batesville, MS 38606 &middot; 662-578-5555</p>
+    </div>
+
+    <div class="card spot">
+      <div class="spot-h"><h3 class="spot-name">The Grove</h3><a class="maplink" href="https://maps.google.com/?q=The+Grove+Ole+Miss+Oxford+MS" target="_blank" rel="noopener">MAP &#8599;</a></div>
+      <p>Saturday headquarters. Tailgating&rsquo;s cathedral, ten acres of tents under the oaks.</p>
+    </div>
+
+    <div class="card spot">
+      <div class="spot-h"><h3 class="spot-name">Vaught-Hemingway Stadium</h3><a class="maplink" href="https://maps.google.com/?q=Vaught-Hemingway+Stadium+Oxford+MS" target="_blank" rel="noopener">MAP &#8599;</a></div>
+      <p>Sixty-four thousand strong, a short walk from the Grove. Saturday&rsquo;s main event.</p>
+    </div>
+
+    <div class="card spot">
+      <div class="spot-h"><h3 class="spot-name">Snackbar</h3><a class="maplink" href="https://maps.google.com/?q=Snackbar+restaurant+Oxford+MS" target="_blank" rel="noopener">MAP &#8599;</a></div>
+      <p>Friday dinner, 6:45. A James Beard-winning kitchen and a serious oyster bar. Trust the specials.</p>
+    </div>
+
+    <div class="card spot">
+      <div class="spot-h"><h3 class="spot-name">The Library Sports Bar</h3><a class="maplink" href="https://maps.google.com/?q=The+Library+Sports+Bar+Oxford+MS" target="_blank" rel="noopener">MAP &#8599;</a></div>
+      <p>Wristbands at 2:30 Friday, back at 10 for the night out. Yes, you can tell people you spent the weekend at the library.</p>
+    </div>
+
+    <div class="card spot">
+      <div class="spot-h"><h3 class="spot-name">The Velvet Ditch</h3><a class="maplink" href="https://maps.google.com/?q=The+Velvet+Ditch+Oxford+MS" target="_blank" rel="noopener">MAP &#8599;</a></div>
+      <p>Friday drinks, 4:15. Named for Oxford&rsquo;s nickname: easy to fall into, hard to climb out of.</p>
+    </div>
+
+    <div class="card spot">
+      <div class="spot-h"><h3 class="spot-name">Square Books</h3><a class="maplink" href="https://maps.google.com/?q=Square+Books+Oxford+MS" target="_blank" rel="noopener">MAP &#8599;</a></div>
+      <p>One of the great bookstores in America, right on the Square. Balcony coffee upstairs if Friday starts slow.</p>
+    </div>
+
+    <div class="card spot">
+      <div class="spot-h"><h3 class="spot-name">The Square</h3><a class="maplink" href="https://maps.google.com/?q=Courthouse+Square+Oxford+MS" target="_blank" rel="noopener">MAP &#8599;</a></div>
+      <p>Oxford&rsquo;s center of gravity. Everything above is a five-minute walk from here, which you will appreciate by Saturday night.</p>
+      <img class="jk slap" style="height:64px; bottom:-40px; right:10px; --r:5deg" src="stickers/grin.png" alt="" aria-hidden="true">
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <p><a href="https://docs.google.com/spreadsheets/d/1py4I5ai0ee4uGaVopdiIJDrAWdsPfz1sZ0VSb4Gv9dU/edit" target="_blank" rel="noopener">Flight sheet</a></p>
+  <p style="margin-top:14px;"><a class="btn" href="mailto:jpmeister95@gmail.com">QUESTIONS GO TO JOSH &#9993;</a></p>
+  <p class="small"><span id="j-email">jpmeister95@gmail.com</span><button class="copybtn" id="copy-email" type="button">COPY</button></p>
+  <p class="moods-h">THE MANY MOODS OF JAKEY &mdash; TAP ONE</p>
+  <div class="moods">
+    <span style="--r:-8deg"><img class="jk" src="stickers/hype.png" alt="" aria-hidden="true"></span>
+    <span style="--r:6deg"><img class="jk" src="stickers/mug.png" alt="" aria-hidden="true"></span>
+    <span style="--r:-4deg"><img class="jk" src="stickers/cap.png" alt="" aria-hidden="true"></span>
+    <span style="--r:7deg"><img class="jk" src="stickers/grin.png" alt="" aria-hidden="true"></span>
+    <span style="--r:-6deg"><img class="jk" src="stickers/beach.png" alt="" aria-hidden="true"></span>
+    <span style="--r:5deg"><img class="jk" src="stickers/eyeblack.png" alt="" aria-hidden="true"></span>
+    <span style="--r:-7deg"><img class="jk" src="stickers/waiter.png" alt="" aria-hidden="true"></span>
+  </div>
+  <p class="sig">BUILT FOR JAKEY&rsquo;S LAST RIDE &middot; HOTTY TODDY</p>
+</footer>
+
+<script>
+(function(){
+  /* ---------- tabs ---------- */
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+  var valid = ['plan','schedule','crew','gameday','spots'];
+
+  function activate(name){
+    if(valid.indexOf(name) === -1) name = 'plan';
+    tabs.forEach(function(t){
+      var on = t.getAttribute('data-tab') === name;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      var panel = document.getElementById('p-' + t.getAttribute('data-tab'));
+      if(panel) panel.hidden = !on;
+    });
+    try{ history.replaceState(null, '', '#' + name); }catch(e){}
+    window.scrollTo(0, 0);
+  }
+
+  tabs.forEach(function(t){
+    t.addEventListener('click', function(){ activate(t.getAttribute('data-tab')); });
+  });
+
+  var h = (location.hash || '').replace('#','');
+  if(h && valid.indexOf(h) !== -1 && h !== 'plan') activate(h);
+
+  /* ---------- countdown ---------- */
+  var target = new Date('2026-11-06T14:00:00-06:00'); /* first bus, Fri 2 PM CST */
+  var over   = new Date('2026-11-08T15:00:00-06:00'); /* weekend wrapped */
+  var dEl = document.getElementById('cd-d'),
+      hEl = document.getElementById('cd-h'),
+      mEl = document.getElementById('cd-m'),
+      sEl = document.getElementById('cd-s'),
+      tiles = document.getElementById('cd-tiles'),
+      msg = document.getElementById('cd-msg'),
+      label = document.getElementById('cd-label');
+
+  function pad(n){ return n < 10 ? '0' + n : '' + n; }
+
+  function tick(){
+    var now = new Date();
+    if(now >= over){
+      tiles.hidden = true; msg.hidden = false;
+      label.textContent = 'OXFORD, MISSISSIPPI';
+      msg.textContent = 'That’s a wrap. See everybody at the wedding.';
+      return;
+    }
+    if(now >= target){
+      tiles.hidden = true; msg.hidden = false;
+      label.textContent = 'RIGHT NOW';
+      msg.textContent = 'GO TIME. HOTTY TODDY.';
+      return;
+    }
+    var ms = target - now;
+    var d = Math.floor(ms / 86400000);
+    var hr = Math.floor(ms % 86400000 / 3600000);
+    var mi = Math.floor(ms % 3600000 / 60000);
+    var se = Math.floor(ms % 60000 / 1000);
+    dEl.textContent = d;
+    hEl.textContent = pad(hr);
+    mEl.textContent = pad(mi);
+    sEl.textContent = pad(se);
+  }
+  tick();
+  setInterval(tick, 1000);
+
+  /* ---------- email copy ---------- */
+  var cbtn = document.getElementById('copy-email');
+  if(cbtn){
+    cbtn.addEventListener('click', function(){
+      var done = function(){ cbtn.textContent = 'COPIED'; setTimeout(function(){ cbtn.textContent = 'COPY'; }, 1600); };
+      var fallback = function(){
+        try{
+          var el = document.getElementById('j-email');
+          var r = document.createRange(); r.selectNodeContents(el);
+          var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r);
+        }catch(e){}
+      };
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText('jpmeister95@gmail.com').then(done, fallback);
+      }else{
+        fallback();
+      }
+    });
+  }
+
+  /* ---------- sticker wiggle ---------- */
+  document.querySelectorAll('img.jk').forEach(function(im){
+    im.addEventListener('click', function(){
+      im.classList.remove('wig');
+      void im.offsetWidth;
+      im.classList.add('wig');
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
